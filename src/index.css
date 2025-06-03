@@ -5,8 +5,8 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: hsl(160, 100%, 50%); /* Mint Green */
+  --color-primary-foreground: hsl(210, 40%, 98%);
 
   --color-card: hsl(var(--card));
 
@@ -64,27 +64,27 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 210 40% 98%; /* Light background */
+    --foreground: 222 47% 11%; /* Dark text */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* White card */
 
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 160 100% 50%; /* Mint Green */
+    --primary-foreground: 210 40% 98%; /* Light text on primary */
 
-    --border: 214 32% 91%;
+    --border: 214 32% 91%; /* Light border */
   }
 
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
+    --background: 222 47% 4%; /* Dark background */
+    --foreground: 213 31% 91%; /* Light text in dark mode */
 
-    --card: 222 47% 8%;
+    --card: 222 47% 8%; /* Dark card */
 
-    --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary: 250 65% 65%; /* Adjusted primary for dark mode */
+    --primary-foreground: 213 31% 91%; /* Light text in dark mode */
 
-    --border: 217 33% 20%;
+    --border: 217 33% 20%; /* Dark border */
   }
 
   * {
@@ -145,7 +145,7 @@
 }
 
 @utility star {
-  @apply absolute rounded-full bg-white;
+  @apply absolute rounded-full bg-white; /* Keep white for stars */
   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
 }
 
