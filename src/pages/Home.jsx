@@ -1,4 +1,8 @@
+import { AboutSection } from "../components/AboutSection"
+import { DevSection } from "../components/DevSection"
 import { Navbar } from "../components/Navbar"
+import { ProjectsSection } from "../components/ProjectsSection"
+import { SkillSection } from "../components/SkillsSection"
 import { StarBackground } from "../components/StarBackground"
 import { ThemeToggle } from "../components/ThemeToggle"
 
@@ -14,11 +18,17 @@ export const Home = () => {
         {/* Background Effects*/}
         <StarBackground />
         {/* Navbar */}        
-        <Navbar />
-        {/* Main Content */}
+        <Navbar /> 
+        {/* Main Content */} 
+        <main> 
+            <DevSection /> 
+            <AboutSection />
+            <SkillSection />
+            <ProjectsSection />
+        </main> 
 
 
-        {/* Footer */}
-    </div>
-    )
+        {/* Footer */} 
+    </div> 
+    ) 
 } 
