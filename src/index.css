@@ -11,7 +11,7 @@
 
   --color-card: hsl(var(--card));
 
-  --animate-float: float 6s ease-in-out infinite;
+  /* --animate-float wurde doppelt definiert, die erste Definition wurde entfernt. */
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
   --animate-fade-in: fade-in 0.7s ease-out forwards;
   --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
@@ -74,21 +74,23 @@
   }
 }
 
- /* Meteor mit leichter Skalierung */
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0) scale(0.8);
-      opacity: 1;
-    }
-    50% {
-      transform: rotate(215deg) translateX(-250px) scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px) scale(1);
-      opacity: 0;
-    }
+/* Meteor mit leichter Skalierung */
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0) scale(0.8);
+    opacity: 1;
   }
+
+  50% {
+    transform: rotate(215deg) translateX(-250px) scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(215deg) translateX(-500px) scale(1);
+    opacity: 0;
+  }
+}
 
 
 @layer base {
@@ -112,9 +114,12 @@
 
   .dark {
     /* In dunklem Modus etwas tieferen Nachthimmel */
-    --background: 230 30% 6%;   /* sehr dunkles Blau */
-    --foreground: 220 15% 80%;  /* blasses Grau */
-    --card: 230 30% 12%;        /* dunkleres Card-Background */
+    --background: 230 30% 6%;
+    /* sehr dunkles Blau */
+    --foreground: 220 15% 80%;
+    /* blasses Grau */
+    --card: 230 30% 12%;
+    /* dunkleres Card-Background */
     --primary: 180 80% 60%;
     /* Adjusted primary for dark mode */
     --primary-foreground: 213 31% 91%;
@@ -180,7 +185,8 @@
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139, 92, 246, 0.5)] hover:scale-105 active:scale-95;
+  /* KORREKTUR HIER: Leerzeichen in rgba() entfernt */
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
 }
 
 @utility star {

@@ -6,7 +6,7 @@ const projects = [
     title: "React Bookstore",
     description: "Einfaches, aber funktionales Buchshop-Frontend mit React",
     image: "/projects/project1.png",
-    tags: ["React", "TailwindCSS", "JavaScript"],
+    tags: ["React", "CSS", "JavaScript"],
     demoUrl: "https://library-w-react.vercel.app/",
     githubUrl: "https://github.com/Firat-o/Library-w-React",
   },
