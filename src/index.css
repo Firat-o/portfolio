@@ -5,7 +5,8 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
-  --color-primary: hsl(160, 100%, 50%); /* Mint Green */
+  --color-primary: hsl(160, 100%, 50%);
+  /* Mint Green */
   --color-primary-foreground: hsl(210, 40%, 98%);
 
   --color-card: hsl(var(--card));
@@ -18,73 +19,109 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
+  --star-size-min: 2px;
+  --star-size-max: 5px;
+
+  /* Mehr Variation bei Meteoren */
+  --meteor-size-min: 3px;
+  --meteor-size-max: 7px;
+
+  /* Etwas längere, sanftere Float-Animation */
+  --animate-float: float 8s ease-in-out infinite;
 
   @keyframes float {
+
     0%,
     100% {
-      transform: translateY(0);
+      transform: translateY(0) rotate(0deg);
     }
+
+    25% {
+      transform: translateY(-5px) rotate(2deg);
+    }
+
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-10px) rotate(-2deg);
     }
-  }
-  @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
+
+    75% {
+      transform: translateY(-5px) rotate(1deg);
     }
   }
 }
 
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ /* Meteor mit leichter Skalierung */
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0) scale(0.8);
+      opacity: 1;
+    }
+    50% {
+      transform: rotate(215deg) translateX(-250px) scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px) scale(1);
+      opacity: 0;
+    }
+  }
+
+
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Light background */
-    --foreground: 222 47% 11%; /* Dark text */
+    --background: 210 40% 98%;
+    /* Light background */
+    --foreground: 222 47% 11%;
+    /* Dark text */
 
-    --card: 0 0% 100%; /* White card */
+    --card: 0 0% 100%;
+    /* White card */
 
-    --primary: 160 100% 50%; /* Mint Green */
-    --primary-foreground: 210 40% 98%; /* Light text on primary */
+    --primary: 160 100% 50%;
+    /* Mint Green */
+    --primary-foreground: 210 40% 98%;
+    /* Light text on primary */
 
-    --border: 214 32% 91%; /* Light border */
+    --border: 214 32% 91%;
+    /* Light border */
   }
 
   .dark {
-    --background: 222 47% 4%; /* Dark background */
-    --foreground: 213 31% 91%; /* Light text in dark mode */
+    /* In dunklem Modus etwas tieferen Nachthimmel */
+    --background: 230 30% 6%;   /* sehr dunkles Blau */
+    --foreground: 220 15% 80%;  /* blasses Grau */
+    --card: 230 30% 12%;        /* dunkleres Card-Background */
+    --primary: 180 80% 60%;
+    /* Adjusted primary for dark mode */
+    --primary-foreground: 213 31% 91%;
+    /* Light text in dark mode */
 
-    --card: 222 47% 8%; /* Dark card */
-
-    --primary: 250 65% 65%; /* Adjusted primary for dark mode */
-    --primary-foreground: 213 31% 91%; /* Light text in dark mode */
-
-    --border: 217 33% 20%; /* Dark border */
+    --border: 217 33% 20%;
+    /* Dark border */
   }
 
   * {
@@ -105,19 +142,23 @@
   margin-inline: auto;
   padding-inline: 2rem;
 
-  @media (width >= 640px) {
+  @media (width >=640px) {
     max-width: 640px;
   }
-  @media (width >= 768px) {
+
+  @media (width >=768px) {
     max-width: 768px;
   }
-  @media (width >= 1024px) {
+
+  @media (width >=1024px) {
     max-width: 1024px;
   }
-  @media (width >= 1280px) {
+
+  @media (width >=1280px) {
     max-width: 1280px;
   }
-  @media (width >= 1400px) {
+
+  @media (width >=1400px) {
     max-width: 1400px;
   }
 }
@@ -139,19 +180,35 @@
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139, 92, 246, 0.5)] hover:scale-105 active:scale-95;
 }
 
 @utility star {
-  @apply absolute rounded-full bg-white; /* Keep white for stars */
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+  @apply absolute;
+  width: var(--star-size-min);
+  height: var(--star-size-min);
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.8;
+  animation: float calc(4s + random() * 4s) ease-in-out infinite;
+  /* Pseudo-zufällige Größe */
+  --size: calc(var(--star-size-min) + random() * (var(--star-size-max) - var(--star-size-min)));
+  width: var(--size);
+  height: var(--size);
 }
 
 @utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  @apply absolute;
+  background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  border-radius: 50% 0 50% 0;
+  filter: blur(2px);
+  opacity: 0.9;
+  animation: meteor linear infinite;
+  /* Pseudo-zufällige Länge */
+  --length: calc(30px + random() * 70px);
+  width: var(--length);
+  height: 2px;
 }
 
 #root {
