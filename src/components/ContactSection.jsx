@@ -53,7 +53,7 @@ export const ContactSection = () => {
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Sag <span className="text-primary">Hallo</span>
+          Meld <span className="text-primary">dich</span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Ob Projektidee, Collab oder Feedback – einfach anschreiben. Ich bin offen für alles, was nach vorne geht.
@@ -92,7 +92,7 @@ export const ContactSection = () => {
             </div>
           </div>
           <div className="bg-card p-8 rounded-lg shadow-xs backdrop-blur-sm bg-background/80">
-            <h3 className="text-2xl font-semibold mb-6">Schreib mir was</h3>
+            <h3 className="text-2xl font-semibold mb-6">Schreib mir</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Dein Name</label>
