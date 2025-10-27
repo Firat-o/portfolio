@@ -4,20 +4,20 @@ import { cn } from '@/lib/utils'
 
 const skills = [
     // Frontend
-    { name: "HTML/CSS", level: 95, category: "frontend" },
-    { name: "JavaScript / TypeScript", level: 85, category: "frontend" },
-    { name: "Tailwind CSS", level: 85, category: "frontend" },
-    { name: "Next.js", level: 70, category: "frontend" },
-    { name: "React", level: 65, category: "frontend" },
+    { name: "HTML/CSS", level: 75, category: "frontend" },
+    { name: "JavaScript / TypeScript", level: 65, category: "frontend" },
+    { name: "Tailwind CSS", level: 55, category: "frontend" },
+    { name: "Next.js", level: 45, category: "frontend" },
+    { name: "React", level: 45, category: "frontend" },
     // Backend
-    { name: "Node.js", level: 60, category: "backend" },
-    { name: "PostgreSQL", level: 15, category: "backend" },
+    { name: "Node.js", level: 35, category: "backend" },
+    { name: "PostgreSQL", level: 5, category: "backend" },
     { name: "MongoDB", level: 5, category: "backend" },
-    { name: "Python", level: 35, category: "backend" },
+    { name: "Python", level: 45, category: "backend" },
     // Tools
-    { name: "Git/GitHub", level: 80, category: "tools" },
-    { name: "Docker", level: 10, category: "tools" },
-    { name: "VS Code", level: 95, category: "tools" },
+    { name: "Git/GitHub", level: 55, category: "tools" },
+    { name: "Docker", level: 5, category: "tools" },
+    { name: "VS Code", level: 75, category: "tools" },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"]
