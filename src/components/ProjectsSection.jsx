@@ -29,6 +29,15 @@ const projects = [
     githubUrl: "https://github.com/Firat-o/invite-card",
   },
   {
+    id: 5,
+    title: "Izoki.io Online Store (Shopify)",
+    description: "Design, Aufbau und Konfiguration eines voll funktionsfähigen E-Commerce-Shops für Merch und Dienstleistungen auf der Shopify-Plattform.",
+    image: "/projects/izoki-shop.png", 
+    tags: ["Shopify", "E-Commerce", "Design", "Marketing"],
+    demoUrl: "https://izoki.io/", 
+    githubUrl: "#", 
+  },
+  {
     id: 3,
     title: "Was kommt als Nächstes ?",
     description: "Unser Projekt?",
