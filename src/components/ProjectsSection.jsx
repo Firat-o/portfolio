@@ -58,7 +58,7 @@ export const ProjectsSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Einige Beispiele, wie ich Dinge umsetze. Kein unnötiger Schnickschnack – einfach Code, der läuft.
+          Einige Beispiele, wie ich Dinge sinngemäß für den Zweck umsetze.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
