@@ -30,7 +30,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "Izoki.io Online Store (Shopify)",
+    title: "E-Commerce Online Store (Shopify)",
     description: "Design, Aufbau und Konfiguration eines voll funktionsfähigen E-Commerce-Shops für Merch und Dienstleistungen auf der Shopify-Plattform.",
     image: "/projects/izoki-shop.png", 
     tags: ["Shopify", "E-Commerce", "Design", "Marketing"],
