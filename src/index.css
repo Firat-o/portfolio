@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
+/* Animations */
 @keyframes pulse-glow {
-  0%, 100% { text-shadow: 0 0 15px hsl(var(--primary) / 0.7); }
-  50% { text-shadow: 0 0 25px hsl(var(--primary) / 0.9); }
+  0%, 100% { text-shadow: 0 0 12px hsl(var(--primary) / 0.65); }
+  50% { text-shadow: 0 0 22px hsl(var(--primary) / 0.9); }
 }
-
 @keyframes glitch {
   0%, 100% { transform: translate(0, 0); }
   20% { transform: translate(-1px, 1px); }
@@ -12,30 +12,20 @@
   60% { transform: translate(1px, 1px); }
   80% { transform: translate(1px, -1px); }
 }
-
 @keyframes shake-subtle {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0) rotate(-1deg);
-  }
-  20%, 80% {
-    transform: translate3d(1px, 0, 0) rotate(1deg);
-  }
-  30%, 50%, 70% {
-    transform: translate3d(-1px, 0, 0) rotate(-1deg);
-  }
-  40%, 60% {
-    transform: translate3d(1px, 0, 0) rotate(1deg);
-  }
+  10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+  20%, 80% { transform: translate3d(1px, 0, 0) rotate(1deg); }
+  30%, 50%, 70% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+  40%, 60% { transform: translate3d(1px, 0, 0) rotate(1deg); }
 }
 
+/* Theme tokens + keyframes */
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-
   --color-card: hsl(var(--card));
 
   --animate-float: float 8s ease-in-out infinite;
@@ -49,52 +39,31 @@
   --animate-rotate-border: rotate-border 4s linear infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(3deg); }
-  }
-  @keyframes pulse-subtle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-  }
-  @keyframes fade-in-scanner {
-    from {
-      opacity: 0;
-      clip-path: inset(0 100% 0 0);
-    }
-    to {
-      opacity: 1;
-      clip-path: inset(0 0 0 0);
-    }
-  }
-  @keyframes meteor {
-    0% { transform: rotate(215deg) translateX(0); opacity: 1; }
-    70% { opacity: 1; }
-    100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
-  }
-  @keyframes rotate-border {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-10px) rotate(3deg)} }
+  @keyframes pulse-subtle { 0%,100%{opacity:1} 50%{opacity:.85} }
+  @keyframes fade-in-scanner { from{opacity:0;clip-path:inset(0 100% 0 0)} to{opacity:1;clip-path:inset(0 0 0 0)} }
+  @keyframes meteor { 0%{transform:rotate(215deg) translateX(0);opacity:1} 70%{opacity:1} 100%{transform:rotate(215deg) translateX(-500px);opacity:0} }
+  @keyframes rotate-border { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
 }
 
+/* Base */
 @layer base {
   :root {
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --primary: 190 95% 55%;
+    --primary: 190 95% 50%;
     --primary-foreground: 210 50% 10%;
     --border: 214 32% 91%;
   }
 
   .dark {
-    --background: 210 30% 8%;
+    --background: 215 30% 7%;
     --foreground: 195 100% 95%;
-    --card: 210 30% 12% / 0.75;
+    --card: 215 25% 12% / 0.72;
     --primary: 190 95% 55%;
     --primary-foreground: 210 50% 10%;
-    --border: 200 25% 25%;
+    --border: 200 20% 23%;
   }
 
   * { @apply border-border; }
@@ -102,22 +71,41 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    font-family: 'Bahnschrift', 'Segoe UI', 'Roboto Mono', system-ui, sans-serif;
+    font-family: 'Bahnschrift','Segoe UI','Roboto Mono',system-ui,sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-image:
+      radial-gradient(1200px 600px at 20% -10%, hsl(var(--primary) / 0.08) 0%, transparent 60%),
+      radial-gradient(1200px 600px at 80% 110%, hsl(var(--primary) / 0.06) 0%, transparent 60%),
+      radial-gradient(900px 600px at 50% -20%, hsl(var(--foreground) / 0.03) 0%, transparent 70%);
+    background-attachment: fixed;
   }
 
   .dark body {
-    background-color: hsl(var(--background));
     background-image:
-      repeating-linear-gradient(0deg, hsl(var(--border) / 0.04) 0, hsl(var(--border) / 0.04) 1px, transparent 1px, transparent 4px),
-      repeating-linear-gradient(90deg, hsl(var(--border) / 0.04) 0, hsl(var(--border) / 0.04) 1px, transparent 1px, transparent 40px);
-    background-attachment: fixed;
+      radial-gradient(1200px 600px at 20% -10%, hsl(var(--primary) / 0.14) 0%, transparent 60%),
+      radial-gradient(1200px 600px at 80% 110%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
+      radial-gradient(1000px 700px at 50% 30%, hsl(var(--foreground) / 0.06) 0%, transparent 70%);
   }
-  
+
+  body::after {
+    content:"";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 .015 .03 .05'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+    opacity: .45;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+  }
+
   .dark .card {
     background-color: hsl(var(--card));
     backdrop-filter: blur(12px);
-    box-shadow: inset 0 0 20px hsl(var(--background) / 0.8);
+    box-shadow: inset 0 0 18px hsl(var(--background) / 0.75);
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
   }
 
@@ -128,7 +116,7 @@
   .gradient-border::before {
     content: '';
     @apply absolute top-1/2 left-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2;
-    background: conic-gradient(transparent, hsl(var(--primary) / 0.6), transparent 25%);
+    background: conic-gradient(transparent, hsl(var(--primary) / 0.65), transparent 25%);
     animation: var(--animate-rotate-border);
   }
   .gradient-border > * {
@@ -136,11 +124,13 @@
     background: hsl(var(--card));
   }
 
-  .dark .cosmic-button:hover {
-    animation: glitch 0.2s steps(2, end) infinite;
-  }
+  h1 { text-shadow: 0 1px 0 hsl(var(--foreground) / 0.25); }
+  .dark h1 { text-shadow: 0 1px 0 hsl(var(--foreground) / 0.15); }
+
+  .dark .cosmic-button:hover { animation: glitch 0.2s steps(2, end) infinite; }
 }
 
+/* Utilities */
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -150,65 +140,53 @@
   @media (width >= 1280px) { max-width: 1280px; }
   @media (width >= 1400px) { max-width: 1400px; }
 }
-
-@utility text-glow {
-  @apply relative;
-  animation: var(--animate-pulse-glow);
-}
-
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02];
-}
-
-/* KORREKTUR: Die leere @utility gradient-border {} wurde hier entfernt. */
+@utility text-glow { @apply relative; animation: var(--animate-pulse-glow); }
+@utility card-hover { @apply transition-transform duration-300 hover:scale-[1.02]; }
 
 @utility cosmic-button {
-  @apply px-6 py-2 bg-primary text-primary-foreground font-medium
-          transition-all duration-300
-          hover:[filter:drop-shadow(0_0_15px_hsl(var(--primary)/0.7))]
-          hover:scale-105 active:scale-95;
+  @apply px-6 py-2 bg-primary text-primary-foreground font-medium transition-all duration-300 hover:scale-105 active:scale-95;
   clip-path: polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px));
+  filter: drop-shadow(0 0 0 transparent);
 }
+.cosmic-button:hover { filter: drop-shadow(0 0 14px hsl(var(--primary) / 0.65)); }
 
 .extra-button {
   @apply relative inline-block px-8 py-3 font-medium text-primary-foreground transition-all duration-300 active:scale-95;
   clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
   background: transparent;
-  z-index: 1; 
+  z-index: 1;
 }
-
-/* Der "visuelle Doppelgänger", der HINTER dem Button liegt */
 .extra-button::before {
   content: '';
   @apply absolute top-0 left-0 h-full w-full bg-primary -z-10;
   clip-path: inherit;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease-out;
+  transition: transform .3s cubic-bezier(0.25, 1, 0.5, 1), filter .3s ease-out;
 }
-
-/* Wenn wir über den Button hovern (Doppelgänger-Effekt) */
 .extra-button:hover::before {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 15px hsl(var(--primary) / 0.7));
+  filter: drop-shadow(0 0 14px hsl(var(--primary) / 0.6));
 }
-
-/* NEU: Wenn wir über den Button hovern, wird der Button selbst geschüttelt */
-.extra-button:hover {
-  animation: shake-subtle 0.5s cubic-bezier(.36,.07,.19,.97) both;
-}
+.extra-button:hover { animation: shake-subtle .5s cubic-bezier(.36,.07,.19,.97) both; }
 
 @utility star {
   @apply absolute rounded-full bg-primary;
-  box-shadow: 0 0 12px 3px hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 10px 3px hsl(var(--primary) / 0.45);
 }
-
 @utility meteor {
   @apply absolute bg-gradient-to-r from-primary via-primary to-transparent rounded-full;
-  box-shadow: 0 0 15px 5px hsl(var(--primary) / 0.4);
+  box-shadow: 0 0 12px 4px hsl(var(--primary) / 0.35);
 }
 
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+/* Structure */
+#root { max-width: 100%; margin: 0 auto; padding: 0; text-align: center; }
+
+/* A11y focus */
+:where(a,button,input,select,textarea):focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+  border-radius: 6px;
 }
+
+/* Particle layer helpers */
+.canvas-particles { filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.55)); }
+.dark .canvas-particles { filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.7)); }
