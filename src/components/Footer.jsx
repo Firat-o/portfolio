@@ -35,7 +35,7 @@ export const Footer = () => {
           id="kontakt-adresse"
           className="w-full mt-4 text-sm not-italic text-muted-foreground"
         >
-          Firat Olcay, Schillerstraße 13, 58089 Hagen, NRW<br />
+          Firat Olcay, Straße, Hausnummer, PLZ, Bundesland<br />
           <a href="mailto:f.olcay@outlook.de" className="hover:underline">
             f.olcay@outlook.de
           </a>
