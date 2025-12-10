@@ -5,7 +5,7 @@ const projects = [
     id: 6,
     title: "Beratung & Terminbuchung",
     description: "Moderne Landingpage für eine Sexualberaterin. Features: Responsives Aura-Design, Dark Mode, Framer Motion Animationen und DSGVO-konforme Terminbuchung via meetergo.",
-    image: "/projects/project6.png",
+    image: "/projects/project5.png",
     tags: ["Next.js 15", "TailwindCSS", "ShadCN UI", "TypeScript"],
     demoUrl: "https://landingpage-sw.vercel.app/", 
     githubUrl: "https://github.com/Firat-o/landingpage-sw",
