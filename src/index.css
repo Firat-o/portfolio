@@ -72,6 +72,10 @@
     --star-color: 190 95% 55%;
   }
 
+  * {
+    cursor: none !important;
+  }
+
   * { @apply border-border; }
   html { @apply scroll-smooth; }
 
