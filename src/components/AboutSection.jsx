@@ -86,7 +86,7 @@ export const AboutSection = () => {
                     </span>
                   </div>
                   <div className="pl-10 text-emerald-400/80">
-                    "{ "focus" : "Clean Code", "design" : "High-End" }"
+                    {'{ "focus" : "Clean Code", "design" : "High-End" }'}
                   </div>
                 </div>
 
