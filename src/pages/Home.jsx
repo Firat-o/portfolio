@@ -5,7 +5,7 @@ import { DevSection } from "../components/DevSection";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { ProjectsSection } from "../components/ProjectsSection";
-import { SkillSection } from "../components/SkillSection";
+import { SkillsSection } from "../components/SkillsSection";
 import { StarBackground } from "../components/StarBackground";
 import { ThemeToggle } from "../components/ThemeToggle";
 
@@ -32,7 +32,7 @@ export const Home = () => {
       <main>
         <DevSection />
         <AboutSection />
-        <SkillSection />
+        <SkillsSection />
         <ProjectsSection />
         <ContactSection />
       </main>
