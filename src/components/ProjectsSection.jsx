@@ -1,4 +1,5 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -9,6 +10,7 @@ const projects = [
     tags: ["Next.js 15", "TailwindCSS", "ShadCN UI", "TypeScript"],
     demoUrl: "https://landingpage-sw.vercel.app/", 
     githubUrl: "https://github.com/Firat-o/landingpage-sw",
+    featured: true
   },
   {
     id: 5,
@@ -18,6 +20,7 @@ const projects = [
     tags: ["Shopify", "E-Commerce", "Design", "Marketing"],
     demoUrl: "https://izoki.io/", 
     githubUrl: "#", 
+    featured: false
   },
   {
     id: 4,
@@ -27,6 +30,7 @@ const projects = [
     tags: ["Next.js", "Firebase", "TailwindCSS"],
     demoUrl: "https://invite-card-theta.vercel.app/",
     githubUrl: "https://github.com/Firat-o/invite-card",
+    featured: false
   },
   {
     id: 2,
@@ -36,6 +40,7 @@ const projects = [
     tags: ["React", "Firebase", "CSS"],
     demoUrl: "https://quote-app-beta-delta.vercel.app/",
     githubUrl: "https://github.com/Firat-o/Quote-App-Beta",
+    featured: false
   },
   {
     id: 1,
@@ -45,81 +50,130 @@ const projects = [
     tags: ["React", "TailwindCSS", "JavaScript"],
     demoUrl: "https://library-w-react.vercel.app/",
     githubUrl: "https://github.com/Firat-o/Library-w-React",
+    featured: false
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          <span className="text-primary">Projekte</span> im Fokus
-        </h2>
+    <section id="projects" className="py-32 px-4 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-1/3 bg-primary/5 blur-[120px] rounded-full -z-10" />
+      
+      <div className="container mx-auto max-w-6xl">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            Selected <span className="text-primary italic">Works</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Digitale Lösungen an der Schnittstelle von Design und Technologie.
+          </p>
+        </motion.div>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Einige Beispiele, wie ich moderne Technologien für echte Kundenbedürfnisse einsetze.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover border border-border/50">
-              <div className="h-48 overflow-hidden relative">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.map((project) => (
+            <motion.div 
+              key={project.id}
+              variants={itemVariants}
+              className="group relative bg-card/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors duration-500"
+            >
+              <div className="aspect-video overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover blur-0 group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
               </div>
 
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
-                    <span key={i} className="px-2 py-1 text-xs font-medium border rounded-full bg-primary/10 text-primary border-primary/20">
+                  {project.tags.slice(0, 3).map((tag, i) => (
+                    <span key={i} className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded bg-secondary text-secondary-foreground">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-6 line-clamp-3">{project.description}</p>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-2">
+                  {project.description}
+                </p>
 
-                <div className="flex justify-between items-center mt-auto">
-                  <div className="flex space-x-3">
-                    {project.demoUrl !== "#" && (
-                        <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        className="text-foreground/70 hover:text-primary transition-colors duration-300 flex items-center gap-1 text-sm"
-                        >
-                        <ExternalLink size={18} /> Live Demo
-                        </a>
-                    )}
-                    {project.githubUrl !== "#" && (
-                        <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        className="text-foreground/70 hover:text-primary transition-colors duration-300 flex items-center gap-1 text-sm"
-                        >
-                        <Github size={18} /> Code
-                        </a>
-                    )}
-                  </div>
+                <div className="flex items-center gap-6">
+                  {project.demoUrl !== "#" && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      className="text-sm font-semibold flex items-center gap-2 hover:text-primary transition-colors"
+                    >
+                      View Project <ExternalLink size={14} />
+                    </a>
+                  )}
+                  {project.githubUrl !== "#" && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-16">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center mt-20"
+        >
           <a
             href="https://github.com/Firat-o"
             target="_blank"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-bold hover:scale-105 transition-transform"
           >
-            Mehr auf GitHub <ArrowRight size={16} />
+            Alle Projekte sehen
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
