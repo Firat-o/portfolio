@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "@/components/ui/toaster";
+import { CustomCursor } from "./components/CustomCursor";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <>
+      <CustomCursor />
       <Toaster />
       <BrowserRouter>
         <AnimatedRoutes />
