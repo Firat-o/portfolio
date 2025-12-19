@@ -1,20 +1,31 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Home } from "./pages/Home"
-import { NotFound } from "./pages/NotFound"
-import { Toaster } from "@/components/ui/toaster"
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
+import { Toaster } from "@/components/ui/toaster";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   return (
     <>
       <Toaster />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AnimatedRoutes />
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
