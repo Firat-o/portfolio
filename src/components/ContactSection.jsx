@@ -1,9 +1,8 @@
-
-
 import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -19,27 +18,21 @@ export const ContactSection = () => {
     try {
       const response = await fetch('/api/send', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        throw new Error('Fehler bei der Anfrage. Status: ' + response.status);
-      }
+      if (!response.ok) throw new Error('Status: ' + response.status);
 
       toast({
-        title: "Nachricht erfolgreich verschickt",
-        description: "Danke dir! Ich melde mich bald.",
+        title: "Übertragung abgeschlossen",
+        description: "Daten empfangen. Ich melde mich in Kürze.",
       });
       e.target.reset();
-
     } catch (error) {
-      console.error(error);
       toast({
-        title: "Da ist was schiefgelaufen!",
-        description: "Bitte versuche es später noch einmal.",
+        title: "Übertragungsfehler!",
+        description: "Verbindung unterbrochen. Bitte erneut versuchen.",
         variant: "destructive",
       });
     } finally {
@@ -48,70 +41,111 @@ export const ContactSection = () => {
   };
 
   return (
-    // ... der Rest deiner Komponente bleibt gleich ...
-    // Hier ist der unveränderte JSX-Teil zur Sicherheit
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Meld <span className="text-primary">dich</span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Ob Projektidee, Collab oder Feedback – einfach anschreiben. Ich bin offen für alles, was nach vorne geht.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">Direkt erreichbar</h3>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10"><Mail className="h-6 w-6 text-primary" /></div>
-                <div>
-                  <h4 className="font-medium">Mail</h4>
-                  <a href="mailto:f.olcay@outlook.de" className="text-muted-foreground hover:text-primary transition-colors">f.olcay@outlook.de</a>
+    <section id="contact" className="py-32 px-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-secondary/10 -z-10" />
+      
+      <div className="container mx-auto max-w-6xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4">
+            Connect <span className="text-primary">Directly</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Offen für Visionäre, technologische Herausforderungen und professionellen Austausch.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="space-y-8">
+              {[
+                { icon: <Mail />, label: "Mail", val: "f.olcay@outlook.de", href: "mailto:f.olcay@outlook.de" },
+                { icon: <Phone />, label: "Telefon", val: "+49 178 ...", href: "tel:+491784596118" },
+                { icon: <MapPin />, label: "Standort", val: "Hagen, NRW", href: null }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-6 group">
+                  <div className="p-4 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[0_0_15px_rgba(0,242,255,0)] group-hover:shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</h4>
+                    {item.href ? (
+                      <a href={item.href} className="text-lg font-semibold hover:text-primary transition-colors">
+                        {item.val}
+                      </a>
+                    ) : (
+                      <span className="text-lg font-semibold">{item.val}</span>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10"><Phone className="h-6 w-6 text-primary" /></div>
-                <div>
-                  <h4 className="font-medium">Telefon</h4>
-                  <a href="tel:+491784596118" className="text-muted-foreground hover:text-primary transition-colors">+49 178 ***im-CV***</a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10"><MapPin className="h-6 w-6 text-primary" /></div>
-                <div>
-                  <h4 className="font-medium">Standort</h4>
-                  <span className="text-muted-foreground">Hagen, NRW</span>
-                </div>
+              ))}
+            </div>
+
+            <div className="p-8 tech-card border-primary/10 bg-card/30">
+              <h4 className="font-mono text-xs uppercase tracking-[0.3em] mb-6 text-primary">Cyber_Networks</h4>
+              <div className="flex gap-4">
+                <a 
+                  href="https://www.linkedin.com/in/firat-o-2a7667295/" 
+                  target="_blank" 
+                  className="p-3 bg-foreground/5 hover:bg-primary/20 hover:text-primary rounded-lg transition-all border border-transparent hover:border-primary/40"
+                >
+                  <Linkedin size={24} />
+                </a>
               </div>
             </div>
-            <div className="pt-8">
-              <h4 className="font-medium mb-4">Netzwerke</h4>
-              <div className="flex space-x-4 justify-center">
-                <a href="https://www.linkedin.com/in/firat-o-2a7667295/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Linkedin /></a>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full -z-10" />
+            <form onSubmit={handleSubmit} className="tech-card border-primary/20 bg-background/40 backdrop-blur-xl p-8 space-y-6">
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-primary opacity-70">Identität</label>
+                <input 
+                  type="text" name="name" required 
+                  className="w-full bg-secondary/20 border-b border-white/10 p-3 focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/30"
+                  placeholder="DEIN NAME"
+                />
               </div>
-            </div>
-          </div>
-          <div className="bg-card p-8 rounded-lg shadow-xs backdrop-blur-sm bg-background/80">
-            <h3 className="text-2xl font-semibold mb-6">Schreib mir</h3>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Dein Name</label>
-                <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground transition-colors duration-300 focus:outline-none focus:border-primary" placeholder="z. B. Max Mustermann" />
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-primary opacity-70">Kontaktkanal</label>
+                <input 
+                  type="email" name="email" required 
+                  className="w-full bg-secondary/20 border-b border-white/10 p-3 focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/30"
+                  placeholder="EMAIL_ADRESSE"
+                />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Deine Mail</label>
-                <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground transition-colors duration-300 focus:outline-none focus:border-primary" placeholder="z. B. max@example.com" />
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-primary opacity-70">Transmission_Content</label>
+                <textarea 
+                  name="message" required rows={4}
+                  className="w-full bg-secondary/20 border-b border-white/10 p-3 focus:outline-none focus:border-primary transition-colors resize-none placeholder:text-muted-foreground/30"
+                  placeholder="NACHRICHT EINGEBEN..."
+                />
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Deine Nachricht</label>
-                <textarea id="message" name="message" required rows={4} className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground transition-colors duration-300 focus:outline-none focus:border-primary resize-none" placeholder="Hey Firat, ich hab da was ..."></textarea>
-              </div>
-              <button type="submit" disabled={isSubmitting} className={cn("cosmic-button w-full flex items-center justify-center gap-2")}>
-                {isSubmitting ? "Wird gesendet..." : "Sende Nachricht"}
-                <Send size={16} />
+              <button 
+                type="submit" 
+                disabled={isSubmitting} 
+                className="cosmic-button w-full py-4 uppercase font-black tracking-widest flex items-center justify-center gap-3"
+              >
+                {isSubmitting ? "Sende Protokoll..." : "Sende Nachricht"}
+                <Send size={18} />
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
