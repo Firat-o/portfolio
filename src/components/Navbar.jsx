@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, Code2, SunMoon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -61,8 +61,11 @@ export const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
+        <div className="flex items-center gap-4">
+          <div className="relative z-50">
+            <ThemeToggle />
+          </div>
+          
           <button
             className="md:hidden p-2 text-foreground transition-transform active:scale-90"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -95,10 +98,13 @@ export const Navbar = () => {
                 </a>
               ))}
             </div>
-            <div className="pt-6 border-t border-primary/10">
-               <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                  System Status: Online
-               </p>
+            
+            <div className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4">
+               <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+                  <SunMoon size={14} className="text-primary" />
+                  Interface Mode
+               </div>
+               <ThemeToggle />
             </div>
           </motion.div>
         )}
