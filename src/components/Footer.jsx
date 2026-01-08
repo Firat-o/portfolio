@@ -21,7 +21,7 @@ export const Footer = () => {
               Firat<span className="text-primary text-4xl">.</span>
             </h2>
             <p className="text-muted-foreground max-w-sm leading-relaxed text-sm">
-              Designgetriebene Entwicklung am Zenit der Zeit. Ich kombiniere moderne Architektur mit High-End-Ästhetik für digitale Erlebnisse in Hagen und darüber hinaus.
+              Designgetriebene Entwicklung am Zenit der Zeit. Ich kombiniere moderne Architektur mit High-End-Ästhetik für digitale Erlebnisse in Deutschland und darüber hinaus.
             </p>
             <div className="flex gap-4">
               {[
