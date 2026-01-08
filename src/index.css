@@ -6,10 +6,10 @@
 }
 
 @keyframes glitch-rgb {
-  0% { text-shadow: -1px 0 rgba(255,0,0,0.5), 1px 0 rgba(0,255,255,0.5); transform: translate(0,0); }
-  20% { text-shadow: 1px 0 rgba(255,0,0,0.5), -1px 0 rgba(0,255,255,0.5); transform: translate(-1px, 1px); }
-  40% { text-shadow: -1px 0 rgba(255,0,0,0.5), 1px 0 rgba(0,255,255,0.5); transform: translate(1px, -1px); }
-  100% { text-shadow: -1px 0 rgba(255,0,0,0.5), 1px 0 rgba(0,255,255,0.5); transform: translate(0,0); }
+  0% { text-shadow: -1px 0 rgba(0,255,150,0.5), 1px 0 rgba(0,255,0,0.5); transform: translate(0,0); }
+  20% { text-shadow: 1px 0 rgba(0,255,150,0.5), -1px 0 rgba(0,255,0,0.5); transform: translate(-1px, 1px); }
+  40% { text-shadow: -1px 0 rgba(0,255,150,0.5), 1px 0 rgba(0,255,0,0.5); transform: translate(1px, -1px); }
+  100% { text-shadow: -1px 0 rgba(0,255,150,0.5), 1px 0 rgba(0,255,0,0.5); transform: translate(0,0); }
 }
 
 @keyframes shake-subtle {
@@ -49,27 +49,27 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    --background: 150 15% 98%;
+    --foreground: 160 50% 5%;
     --card: 0 0% 100% / 0.8;
-    --primary: 190 90% 35%;
-    --primary-foreground: 0 0% 100%;
-    --border: 214 32% 85%;
-    --grain-opacity: .15;
+    --primary: 158 95% 25%;
+    --primary-foreground: 158 95% 98%;
+    --border: 158 30% 88%;
+    --grain-opacity: .12;
     --grain-blend: multiply;
-    --star-color: 215 20% 65%;
+    --star-color: 158 30% 70%;
   }
 
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 190 100% 96%;
-    --card: 222 47% 8% / 0.6;
-    --primary: 190 95% 55%;
-    --primary-foreground: 222 47% 4%;
-    --border: 190 50% 15%;
-    --grain-opacity: .4;
+    --background: 160 50% 2%;
+    --foreground: 158 100% 94%;
+    --card: 160 50% 4% / 0.7;
+    --primary: 158 82% 54%;
+    --primary-foreground: 160 50% 2%;
+    --border: 158 50% 15%;
+    --grain-opacity: .35;
     --grain-blend: overlay;
-    --star-color: 190 95% 55%;
+    --star-color: 158 82% 54%;
   }
 
   * {
@@ -85,27 +85,27 @@
     position: relative;
     min-height: 100dvh;
     background-image: 
-      radial-gradient(1000px 500px at 15% -5%, hsl(var(--primary) / 0.05) 0%, transparent 70%),
-      radial-gradient(1000px 500px at 85% 105%, hsl(var(--primary) / 0.05) 0%, transparent 70%);
+      radial-gradient(1000px 500px at 15% -5%, hsl(var(--primary) / 0.04) 0%, transparent 70%),
+      radial-gradient(1000px 500px at 85% 105%, hsl(var(--primary) / 0.04) 0%, transparent 70%);
     background-attachment: fixed;
     isolation: isolate;
   }
 
   .dark body {
     background-image: 
-      radial-gradient(1200px 600px at 15% -10%, hsl(var(--primary) / 0.15) 0%, transparent 60%),
-      radial-gradient(1200px 600px at 85% 110%, hsl(var(--primary) / 0.12) 0%, transparent 60%);
+      radial-gradient(1200px 600px at 15% -10%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
+      radial-gradient(1200px 600px at 85% 110%, hsl(var(--primary) / 0.08) 0%, transparent 60%);
   }
 
   body::after {
     content:""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 3px);
-    background-size: 100% 4px; opacity: 0.1; mix-blend-mode: overlay;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,255,100,0.02) 2px, rgba(0,255,100,0.02) 3px);
+    background-size: 100% 4px; opacity: 0.08; mix-blend-mode: overlay;
   }
 
   .dark body::after {
-    opacity: 0.3;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.2) 3px, rgba(0,0,0,0.2) 4px);
+    opacity: 0.25;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,255,100,0.15) 3px, rgba(0,255,100,0.15) 4px);
   }
 
   body::before {
