@@ -6,7 +6,7 @@ const projects = [
     id: 6,
     title: "Aura-Landingpage",
     category: "Next.js 15 / Design",
-    description: "High-End Landingpage für Sexualberatung mit Fokus auf Ästhetik und DSGVO-Konformität.",
+    description: "High-End Landingpage mit Fokus auf Ästhetik und DSGVO-Konformität.",
     image: "/projects/project5.png",
     tags: ["React 19", "Tailwind 4", "Framer"],
     demoUrl: "https://landingpage-sw.vercel.app/",
