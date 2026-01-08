@@ -70,7 +70,7 @@ export const DevSection = () => {
               Zeig mir die Projekte
             </a>
             <div className="text-[10px] uppercase tracking-[0.3em] text-primary/50 font-bold hidden sm:block">
-              Available for projects // 2025
+              Available for projects // 2026
             </div>
           </div>
         </motion.div>
