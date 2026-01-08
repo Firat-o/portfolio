@@ -90,7 +90,7 @@ export const Footer = () => {
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
           <div className="flex items-center gap-2">
             <Shield size={10} className="text-primary" />
-            © {new Date().getFullYear()} FIRAT-O STUDIOS // ALL RIGHTS RESERVED
+            © {new Date().getFullYear()} FIRAT-OLCAY // ALL RIGHTS RESERVED
           </div>
           <div className="flex gap-8">
              <a href="#" className="hover:text-foreground transition-colors">Impressum</a>
