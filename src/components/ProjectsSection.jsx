@@ -89,7 +89,7 @@ export const ProjectsSection = () => {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Selected <span className="text-primary italic">Works</span>
+            Meine <span className="text-primary italic">Arbeit</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Digitale Lösungen an der Schnittstelle von Design und Technologie.
