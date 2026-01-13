@@ -79,7 +79,7 @@ export const ProjectsSection = () => {
               <Code2 size={16} />
               <span>Deployment_Archive</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase">
               AUSGEWÄHLTE <br />
               <span className="hollow-text italic">PROJEKTE</span>
             </h2>
@@ -110,13 +110,7 @@ export const ProjectsSection = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100"
                 />
-                
-                {/* OPTIMIERUNG FÜR LIGHT MODE: 
-                   Der Verlauf geht von 'card' (unten, deckend) zu 'transparent' (oben).
-                   Das garantiert, dass der Text unten immer auf solidem Grund steht.
-                */}
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/90 to-transparent z-10" />
-                
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none" />
               </div>
 
@@ -165,7 +159,3 @@ export const ProjectsSection = () => {
     </section>
   );
 };
-
-function cn(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
