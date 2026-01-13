@@ -84,7 +84,7 @@ export const ProjectsSection = () => {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-xs text-sm font-mono leading-relaxed border-l border-primary/20 pl-4">
-            Ein Auszug meiner Systeme, entwickelt mit Fokus auf Performance und technischer Ästhetik.
+            Ein Auszug meiner Projekte, entwickelt mit Fokus auf Performance und technischer Ästhetik.
           </p>
         </div>
 
