@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* --- ANIMATIONS & KEYFRAMES --- */
+/* --- KEYFRAMES --- */
 
 @keyframes pulse-glow {
   0%, 100% { text-shadow: 0 0 14px hsl(var(--primary) / 0.5); }
@@ -73,46 +73,42 @@
 
 @layer base {
   :root {
-    /* LIGHT MODE (Optimiert für Lesbarkeit) */
-    /* Kühles, abgetöntes Grau statt hartem Weiß */
+    /* LIGHT MODE: Optimiert für Lesbarkeit */
+    /* Kein hartes Weiß, sondern ein technisches Soft-Grey */
     --background: 210 20% 96%; 
     
-    /* Fast Schwarz mit leichtem Blau-Stich für Text */
+    /* Sehr dunkles Grau-Blau für maximalen Text-Kontrast */
     --foreground: 222 47% 10%; 
     
-    --card: 0 0% 100% / 0.9;
+    /* Kartenhintergrund: Solides Weiß (deckend) */
+    --card: 0 0% 100% / 1.0; 
     
-    /* Dunkles Cyber-Teal für hohen Kontrast auf hellem Hintergrund */
-    --primary: 180 90% 25%; 
+    /* Ein dunkleres, satteres Smaragd-Grün für helle Hintergründe */
+    --primary: 180 100% 25%; 
     --primary-foreground: 210 40% 98%;
     
-    --border: 214 32% 82%;
-    --grain-opacity: .07;
+    --border: 214 20% 80%;
+    --grain-opacity: .05;
     --grain-blend: multiply;
-    --star-color: 215 20% 40%;
+    --star-color: 215 20% 50%;
   }
 
   .dark {
-    /* DARK MODE (Hacker Style) */
-    /* Tiefes Matrix-Schwarzgrün */
+    /* DARK MODE: Hacker Style */
     --background: 160 50% 2%; 
-    
-    /* Helles Mint-Weiß für Text */
-    --foreground: 158 100% 94%; 
-    
+    --foreground: 158 100% 94%;
     --card: 160 50% 4% / 0.7;
     
     /* Leuchtendes Neon-Mint */
     --primary: 158 85% 55%; 
     --primary-foreground: 160 50% 2%;
     
-    --border: 158 50% 15%;
+    --border: 158 50% 12%;
     --grain-opacity: .35;
     --grain-blend: overlay;
     --star-color: 158 85% 55%;
   }
 
-  /* Global Reset & Cursor Hide */
   * { 
     cursor: none !important; 
     @apply border-border; 
@@ -128,7 +124,7 @@
     position: relative;
     min-height: 100dvh;
     
-    /* Subtiles Raster im Hintergrund */
+    /* Raster-Hintergrund */
     background-image: 
       radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.05) 1px, transparent 0);
     background-size: 32px 32px;
@@ -144,7 +140,7 @@
       radial-gradient(1200px 600px at 85% 110%, hsl(var(--primary) / 0.12) 0%, transparent 60%);
   }
 
-  /* Scanlines Effekt */
+  /* Scanlines */
   body::after {
     content: ""; 
     position: fixed; 
@@ -158,10 +154,9 @@
   }
 
   .dark body::after {
-    opacity: 0.25; /* Stärker im Dark Mode */
+    opacity: 0.25; 
   }
 
-  /* Grain Textur */
   body::before {
     content: ""; 
     position: fixed; 
@@ -173,7 +168,6 @@
     opacity: var(--grain-opacity);
   }
 
-  /* Gradient Border Utility */
   .gradient-border {
     @apply relative p-[1px] overflow-hidden;
     clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
@@ -207,12 +201,12 @@
 }
 
 @utility hollow-text {
-  /* LESBARKEIT FIX: Dickere Kontur im Light Mode */
+  /* LIGHT MODE: Dickere Kontur (2px) für Lesbarkeit auf hellem Grund */
   -webkit-text-stroke: 2px hsl(var(--primary));
   color: transparent; 
   transition: all 0.4s ease;
   
-  /* Feiner im Dark Mode, da der Kontrast höher ist */
+  /* DARK MODE: Feinere Kontur (1.5px) da Kontrast höher ist */
   .dark & { -webkit-text-stroke: 1.5px hsl(var(--primary)); }
   
   &:hover {
@@ -231,8 +225,8 @@
 }
 
 @utility cosmic-button {
-  @apply px-8 py-3 bg-primary text-primary-foreground font-black tracking-[0.1em] uppercase transition-all duration-300 hover:brightness-110 active:scale-95 relative overflow-hidden;
-  clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  @apply px-10 py-4 bg-primary text-primary-foreground font-black tracking-[0.2em] uppercase transition-all duration-300 hover:brightness-110 active:scale-95 relative overflow-hidden;
+  clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
   &:hover { box-shadow: 0 0 25px hsl(var(--primary) / 0.4); transform: translateY(-2px); }
 }
 
@@ -241,21 +235,23 @@
 }
 
 @utility tech-card {
-  @apply relative bg-card backdrop-blur-3xl border border-border p-8 transition-all duration-500 shadow-lg;
+  @apply relative bg-card backdrop-blur-3xl border border-border p-8 transition-all duration-500 shadow-xl;
   
   /* Eck-Klammern Design */
+  clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  
   &::before, &::after {
     content: ""; 
-    @apply absolute w-3 h-3 transition-all duration-500 border-primary opacity-40;
+    @apply absolute w-4 h-4 transition-all duration-500 border-primary opacity-30;
   }
-  &::before { top: -1px; left: -1px; border-left: 2px solid; border-top: 2px solid; }
-  &::after { bottom: -1px; right: -1px; border-right: 2px solid; border-bottom: 2px solid; }
+  &::before { top: 10px; left: 10px; border-left: 2px solid; border-top: 2px solid; }
+  &::after { bottom: 10px; right: 10px; border-right: 2px solid; border-bottom: 2px solid; }
   
   &:hover { 
-    @apply -translate-y-2 shadow-2xl border-primary/40; 
+    @apply -translate-y-2 shadow-2xl border-primary/60; 
   }
   &:hover::before, &:hover::after { 
-    @apply w-6 h-6 opacity-100; 
+    @apply w-8 h-8 opacity-100; 
   }
 }
 
