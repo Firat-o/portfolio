@@ -12,18 +12,12 @@
   100% { text-shadow: -1px 0 rgba(0,255,150,0.5), 1px 0 rgba(0,255,0,0.5); transform: translate(0,0); }
 }
 
-@keyframes shake-subtle {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(1px, 0, 0); }
-}
-
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes pulse-subtle { 0%,100%{opacity:1} 50%{opacity:.7} }
-@keyframes fade-in-scanner { from{opacity:0;clip-path:inset(0 100% 0 0)} to{opacity:1;clip-path:inset(0 0 0 0)} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 @keyframes meteor { 0%{transform:rotate(215deg) translateX(0);opacity:0} 10%{opacity:1} 70%{opacity:1} 100%{transform:rotate(215deg) translateX(-600px);opacity:0} }
 @keyframes rotate-border { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: hsl(var(--primary)) } }
+@keyframes fade-in-scanner { from{opacity:0;clip-path:inset(0 100% 0 0)} to{opacity:1;clip-path:inset(0 0 0 0)} }
 
 @theme {
   --color-border: hsl(var(--border));
@@ -34,158 +28,100 @@
   --color-card: hsl(var(--card));
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
   --animate-meteor: meteor 6s linear infinite;
   --animate-rotate-border: rotate-border 4s linear infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
   --animate-glitch: glitch-rgb 0.3s ease-in-out both infinite;
-  
   --animate-fade-in: fade-in-scanner 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  --animate-fade-in-delay-1: fade-in-scanner 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
-  --animate-fade-in-delay-2: fade-in-scanner 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
-  --animate-fade-in-delay-3: fade-in-scanner 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
-  --animate-fade-in-delay-4: fade-in-scanner 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
 }
 
 @layer base {
   :root {
-    --background: 160 20% 97%;
+    /* LIGHT MODE: Optimiertes, weiches Mint-Grau statt hartem Weiß */
+    --background: 160 15% 96%;
     --foreground: 160 60% 3%;
     --card: 0 0% 100% / 0.9;
-    --primary: 162 90% 22%;
+    
+    /* LIGHT MODE: Dunkleres Smaragdgrün für besseren Lesekontrast */
+    --primary: 162 95% 20%; 
     --primary-foreground: 162 90% 98%;
-    --border: 162 30% 82%;
+    --border: 162 20% 80%;
+    
     --grain-opacity: .08;
     --grain-blend: multiply;
     --star-color: 162 20% 60%;
   }
 
   .dark {
-    --background: 160 50% 2%;
+    /* DARK MODE: Tiefes Matrix-Grün */
+    --background: 160 60% 2%;
     --foreground: 158 100% 94%;
-    --card: 160 50% 4% / 0.7;
-    --primary: 158 82% 54%;
-    --primary-foreground: 160 50% 2%;
-    --border: 158 50% 15%;
-    --grain-opacity: .35;
-    --grain-blend: overlay;
-    --star-color: 158 82% 54%;
+    --card: 160 60% 4% / 0.7;
+    
+    /* DARK MODE: Leuchtendes Neon-Mint */
+    --primary: 158 85% 55%;
+    --primary-foreground: 160 60% 2%;
+    --border: 158 50% 12%;
+    
+    --grain-opacity: .3;
+    --star-color: 158 85% 55%;
   }
 
-  * {
-    cursor: none !important;
-  }
-
-  * { @apply border-border; }
+  * { cursor: none !important; @apply border-border; }
   html { @apply scroll-smooth; }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-500;
-    font-family: 'Bahnschrift','Segoe UI','Roboto',system-ui,sans-serif;
-    position: relative;
-    min-height: 100dvh;
-    background-image: 
-      radial-gradient(1000px 500px at 15% -5%, hsl(var(--primary) / 0.04) 0%, transparent 70%),
-      radial-gradient(1000px 500px at 85% 105%, hsl(var(--primary) / 0.04) 0%, transparent 70%);
+    @apply bg-background text-foreground transition-colors duration-500 overflow-x-hidden;
+    font-family: 'Bahnschrift', sans-serif;
+    /* Subtiles Raster im Hintergrund für Struktur */
+    background-image: radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
     background-attachment: fixed;
-    isolation: isolate;
   }
 
   .dark body {
     background-image: 
-      radial-gradient(1200px 600px at 15% -10%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
-      radial-gradient(1200px 600px at 85% 110%, hsl(var(--primary) / 0.08) 0%, transparent 60%);
+      radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.1) 1px, transparent 0),
+      radial-gradient(1200px 600px at 15% -10%, hsl(var(--primary) / 0.15) 0%, transparent 60%);
   }
 
   body::after {
     content:""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,255,100,0.01) 2px, rgba(0,255,100,0.01) 3px);
-    background-size: 100% 4px; opacity: 0.05; mix-blend-mode: overlay;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,255,100,0.01) 3px, rgba(0,255,100,0.01) 4px);
+    background-size: 100% 4px; opacity: 0.15; mix-blend-mode: overlay;
   }
-
-  .dark body::after {
-    opacity: 0.25;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,255,100,0.15) 3px, rgba(0,255,100,0.15) 4px);
-  }
-
-  body::before {
-    content:""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
-    mix-blend-mode: var(--grain-blend); opacity: var(--grain-opacity);
-  }
-
-  .gradient-border {
-    @apply relative p-[1px] overflow-hidden;
-    clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  }
-  
-  .gradient-border > * { @apply relative z-10 h-full w-full; background: hsl(var(--card)); backdrop-filter: blur(8px); }
 }
 
-@utility container {
-  margin-inline: auto; padding-inline: 1.5rem;
-  @media (width >= 1280px) { max-width: 1200px; }
-}
-
-@utility text-glow { @apply relative; animation: var(--animate-pulse-glow); }
-
-@utility glitch-hover {
-  @apply relative inline-block transition-all duration-300;
-  &:hover {
-    animation: glitch-rgb 0.4s ease-in-out infinite;
-    color: hsl(var(--primary));
-  }
+@utility tech-card {
+  @apply relative bg-card backdrop-blur-3xl border border-border p-8 transition-all duration-500 shadow-xl;
+  clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  &::before, &::after { content: ""; @apply absolute w-4 h-4 transition-all duration-500 border-primary opacity-30; }
+  &::before { top: 10px; left: 10px; border-left: 2px solid; border-top: 2px solid; }
+  &::after { bottom: 10px; right: 10px; border-right: 2px solid; border-bottom: 2px solid; }
+  &:hover { @apply -translate-y-2 border-primary/40 shadow-2xl; }
+  &:hover::before, &:hover::after { @apply w-8 h-8 opacity-100; }
 }
 
 @utility hollow-text {
-  -webkit-text-stroke: 1.8px hsl(var(--primary));
-  color: transparent; transition: all 0.4s ease;
-  .dark & { -webkit-text-stroke: 2px hsl(var(--primary)); }
-  &:hover {
-    color: hsl(var(--primary) / 0.15);
-    text-shadow: 0 0 12px hsl(var(--primary) / 0.3);
-  }
+  /* LIGHT MODE FIX: Dickerer Stroke für bessere Lesbarkeit auf hellem Grund */
+  -webkit-text-stroke: 2px hsl(var(--primary));
+  color: transparent; 
+  transition: all 0.4s ease;
+  
+  /* DARK MODE: Feinerer Stroke da Kontrast höher ist */
+  .dark & { -webkit-text-stroke: 1.5px hsl(var(--primary)); }
+  
+  &:hover { color: hsl(var(--primary) / 0.15); text-shadow: 0 0 15px hsl(var(--primary) / 0.4); }
 }
 
 @utility typing-effect {
-  overflow: hidden; white-space: nowrap; border-right: 2.5px solid hsl(var(--primary)); width: 0;
+  overflow: hidden; white-space: nowrap; border-right: 3px solid hsl(var(--primary)); width: 0;
   animation: typing 2.5s steps(35, end) forwards, blink-caret .8s step-end infinite;
   animation-delay: 0.6s;
 }
 
 @utility cosmic-button {
-  @apply px-8 py-3 bg-primary text-primary-foreground font-bold transition-all duration-300 hover:brightness-110 active:scale-95 relative overflow-hidden;
-  clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  &:hover { box-shadow: 0 0 20px hsl(var(--primary) / 0.35); }
-}
-
-@utility extra-button {
-  @apply relative inline-block px-8 py-3 font-bold text-primary transition-all duration-300 border border-primary/40 rounded-sm hover:bg-primary/5 active:scale-95;
-}
-
-@utility tech-card {
-  @apply relative bg-card backdrop-blur-xl border border-border p-6 transition-all duration-500 shadow-sm;
-  &::before, &::after {
-    content: ""; @apply absolute w-2 h-2 transition-all duration-500 border-primary opacity-40;
-  }
-  &::before { top: 4px; left: 4px; border-left: 1.5px solid; border-top: 1.5px solid; }
-  &::after { bottom: 4px; right: 4px; border-right: 1.5px solid; border-bottom: 1.5px solid; }
-  &:hover { @apply -translate-y-1 shadow-md border-primary/40; }
-  &:hover::before, &:hover::after { @apply w-4 h-4 opacity-100; }
-}
-
-@utility star { 
-  @apply absolute rounded-full;
-  background-color: hsl(var(--star-color));
-  box-shadow: 0 0 6px hsl(var(--star-color) / 0.2);
-}
-
-@utility meteor {
-  @apply absolute bg-gradient-to-r from-primary via-primary/40 to-transparent rounded-full;
-  opacity: 0.12;
-  .dark & { opacity: 0.5; box-shadow: 0 0 12px hsl(var(--primary) / 0.4); }
-}
-
-:where(a,button,input,textarea):focus-visible {
-  outline: 2px solid hsl(var(--primary)); outline-offset: 4px;
+  @apply px-10 py-4 bg-primary text-primary-foreground font-black tracking-[0.2em] uppercase transition-all duration-500 relative overflow-hidden active:scale-95;
+  clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+  &:hover { box-shadow: 0 0 30px hsl(var(--primary) / 0.5); transform: translateY(-2px); }
 }
