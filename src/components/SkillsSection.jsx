@@ -4,18 +4,18 @@ import { cn } from '@/lib/utils';
 import { Code2, Database, Wrench, Layout, Cpu, Globe } from "lucide-react";
 
 const skills = [
-    { name: "HTML/CSS", level: 75, category: "frontend", icon: <Layout size={18} /> },
-    { name: "JS / TS", level: 65, category: "frontend", icon: <Code2 size={18} /> },
-    { name: "Tailwind CSS", level: 55, category: "frontend", icon: <Globe size={18} /> },
-    { name: "Next.js", level: 45, category: "frontend", icon: <Cpu size={18} /> },
-    { name: "React", level: 45, category: "frontend", icon: <Code2 size={18} /> },
-    { name: "Node.js", level: 35, category: "backend", icon: <Database size={18} /> },
+    { name: "HTML/CSS", level: 20, category: "frontend", icon: <Layout size={18} /> },
+    { name: "JS / TS", level: 15, category: "frontend", icon: <Code2 size={18} /> },
+    { name: "Tailwind CSS", level: 20, category: "frontend", icon: <Globe size={18} /> },
+    { name: "Next.js", level: 10, category: "frontend", icon: <Cpu size={18} /> },
+    { name: "React", level: 10, category: "frontend", icon: <Code2 size={18} /> },
+    { name: "Node.js", level: 10, category: "backend", icon: <Database size={18} /> },
     { name: "PostgreSQL", level: 5, category: "backend", icon: <Database size={18} /> },
     { name: "MongoDB", level: 5, category: "backend", icon: <Database size={18} /> },
-    { name: "Python", level: 45, category: "backend", icon: <Code2 size={18} /> },
-    { name: "Git/GitHub", level: 55, category: "tools", icon: <Wrench size={18} /> },
+    { name: "Python", level: 15, category: "backend", icon: <Code2 size={18} /> },
+    { name: "Git/GitHub", level: 10, category: "tools", icon: <Wrench size={18} /> },
     { name: "Docker", level: 5, category: "tools", icon: <Wrench size={18} /> },
-    { name: "VS Code", level: 75, category: "tools", icon: <Wrench size={18} /> },
+    { name: "VS Code", level: 40, category: "tools", icon: <Wrench size={18} /> },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"];
