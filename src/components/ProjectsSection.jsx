@@ -149,9 +149,9 @@ export const ProjectsSection = () => {
                 </div>
               </div>
 
-              <div className="absolute top-6 right-6 text-xl font-mono font-black text-foreground/10 group-hover:text-primary/20 transition-colors">
+              <div className="absolute top-4 right-4 z-30 font-mono font-bold text-sm tracking-widest text-white/90 bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full shadow-lg">
                 #{project.id.toString().padStart(2, '0')}
-              </div>
+            </div>
             </motion.div>
           ))}
         </div>
