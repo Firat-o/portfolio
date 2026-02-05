@@ -16,7 +16,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "Izoki Shop",
+    title: "Merch Shop",
     category: "E-Commerce",
     description: "Shopify Architektur für Merchandising.",
     image: "/projects/izoki-shop.png",
@@ -27,7 +27,7 @@ const projects = [
   },
   {
     id: 4,
-    title: "Event-Nexus",
+    title: "Event-Invite",
     category: "Fullstack / Tool",
     description: "Firebase gesteuertes Gästemanagement.",
     image: "/projects/project4.png",
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Quote Engine",
+    title: "Quote it",
     category: "Web App",
     description: "Dynamischer Zitat-Generator.",
     image: "/projects/project2.png",
