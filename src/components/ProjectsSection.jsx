@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const projects = [
   {
-    id: 6,
+    id: 4,
     title: "Aura-Landingpage",
     category: "Next.js 15 / Design",
     description: "High-End Landingpage mit Fokus auf Ästhetik und DSGVO-Konformität.",
@@ -15,7 +15,7 @@ const projects = [
     size: "large" 
   },
   {
-    id: 5,
+    id: 3,
     title: "Merch Shop",
     category: "E-Commerce",
     description: "Shopify Architektur für Merchandising.",
@@ -26,7 +26,7 @@ const projects = [
     size: "medium"
   },
   {
-    id: 4,
+    id: 2,
     title: "Event-Invite",
     category: "Fullstack / Tool",
     description: "Firebase gesteuertes Gästemanagement.",
@@ -37,7 +37,7 @@ const projects = [
     size: "small"
   },
   {
-    id: 2,
+    id: 1,
     title: "Quote it",
     category: "Web App",
     description: "Dynamischer Zitat-Generator.",
@@ -47,17 +47,6 @@ const projects = [
     githubUrl: "https://github.com/Firat-o/Quote-App-Beta",
     size: "small"
   },
-  {
-    id: 1,
-    title: "Bookstore Front",
-    category: "Frontend Architecture",
-    description: "Modernes Buchshop-Interface.",
-    image: "/projects/project1.png",
-    tags: ["Tailwind", "JS"],
-    demoUrl: "https://library-w-react.vercel.app/",
-    githubUrl: "https://github.com/Firat-o/Library-w-React",
-    size: "medium"
-  }
 ];
 
 const cardVariants = {
