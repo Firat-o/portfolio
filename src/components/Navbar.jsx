@@ -105,8 +105,10 @@ export const Navbar = () => {
               ))}
             </div>
             
+            {/* TOGGLE AREA - OPTIMIERT FÜR TOUCH */}
             <div 
               className="pt-6 border-t border-primary/10 flex flex-col items-center gap-6 relative z-[103] pointer-events-auto"
+              // Stoppt Klicks, damit sie nicht "durchfallen"
               onClick={(e) => e.stopPropagation()}
             >
                <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest select-none">
@@ -114,6 +116,7 @@ export const Navbar = () => {
                   Interface Mode
                </div>
                
+               {/* FIX 2: scale-150 macht ihn 50% größer. p-4 macht die Klickfläche riesig. */}
                <div className="scale-150 p-4 rounded-full active:bg-primary/5 transition-colors cursor-pointer touch-manipulation">
                  <ThemeToggle />
                </div>
