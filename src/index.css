@@ -98,6 +98,15 @@
     --scanline-opacity: 0.05;
     
     --star-color: 215 20% 40%;
+    @media (min-width: 768px) {
+    * { 
+      cursor: none !important; 
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
   }
 
   .dark {
