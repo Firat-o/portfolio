@@ -26,6 +26,7 @@ export const Navbar = () => {
 
   return (
     <nav
+      // FIX 1: z-[100] garantiert, dass die Navbar ÜBER den Scanlines liegt
       className={cn(
         "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4",
         isScrolled ? "py-4" : "py-8"
@@ -48,6 +49,7 @@ export const Navbar = () => {
           </span>
         </a>
 
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -61,11 +63,14 @@ export const Navbar = () => {
           ))}
         </div>
 
+        {/* Icons rechts */}
         <div className="flex items-center gap-4">
+          {/* Desktop Toggle (nur auf PC sichtbar) */}
           <div className="hidden md:block relative z-50">
             <ThemeToggle />
           </div>
           
+          {/* Hamburger Button (nur Mobile) */}
           <button
             className="md:hidden p-2 text-foreground transition-transform active:scale-90 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -75,6 +80,7 @@ export const Navbar = () => {
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -100,14 +106,15 @@ export const Navbar = () => {
             </div>
             
             <div 
-              className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4 relative z-[103] pointer-events-auto"
+              className="pt-6 border-t border-primary/10 flex flex-col items-center gap-6 relative z-[103] pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
             >
-               <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+               <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest select-none">
                   <SunMoon size={14} className="text-primary" />
                   Interface Mode
                </div>
-               <div className="p-2">
+               
+               <div className="scale-150 p-4 rounded-full active:bg-primary/5 transition-colors cursor-pointer touch-manipulation">
                  <ThemeToggle />
                </div>
             </div>
