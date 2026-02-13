@@ -73,49 +73,62 @@
 
 @layer base {
   :root {
-    /* LIGHT MODE: Optimiert für Lesbarkeit */
-    /* Kein hartes Weiß, sondern ein technisches Soft-Grey */
-    --background: 210 20% 96%; 
+    /* --- LIGHT MODE OPTIMIERT (SILVER-TECH) --- */
     
-    /* Sehr dunkles Grau-Blau für maximalen Text-Kontrast */
-    --foreground: 222 47% 10%; 
+    /* Hintergrund: Kühles Platin-Grau statt Weiß (Augenschonender) */
+    /* HSL: 220 Hue (Blau), 15% Sättigung, 90% Helligkeit */
+    --background: 220 15% 90%; 
     
-    /* Kartenhintergrund: Solides Weiß (deckend) */
-    --card: 0 0% 100% / 1.0; 
+    /* Text: Ein sehr dunkles Blau-Grau (Weicher als reines Schwarz) */
+    --foreground: 222 47% 15%; 
     
-    /* Ein dunkleres, satteres Smaragd-Grün für helle Hintergründe */
-    --primary: 180 100% 25%; 
+    /* Karte: Ein helleres Grau, hebt sich vom Hintergrund ab, strahlt aber nicht */
+    --card: 220 20% 97%; 
+    
+    /* Primary: Ein dunkleres Teal für guten Kontrast auf hellem Grund */
+    --primary: 180 100% 22%; 
     --primary-foreground: 210 40% 98%;
     
-    --border: 214 20% 80%;
-    --grain-opacity: .05;
+    /* Border: Etwas dunkler für Struktur */
+    --border: 215 15% 75%;
+
+    /* Scanlines/Grain im Hellen drastisch reduzieren, sonst sieht es "dreckig" aus */
+    --grain-opacity: .03;
     --grain-blend: multiply;
-    --star-color: 215 20% 50%;
+    --scanline-opacity: 0.05;
+    
+    --star-color: 215 20% 40%;
   }
 
   .dark {
-    /* DARK MODE: Hacker Style */
+    /* --- DARK MODE (Unverändert gut, nur Scanline Variable genutzt) --- */
     --background: 160 50% 2%; 
     --foreground: 158 100% 94%;
     --card: 160 50% 4% / 0.7;
     
-    /* Leuchtendes Neon-Mint */
     --primary: 158 85% 55%; 
     --primary-foreground: 160 50% 2%;
     
     --border: 158 50% 12%;
+    
     --grain-opacity: .35;
     --grain-blend: overlay;
+    --scanline-opacity: 0.25;
+    
     --star-color: 158 85% 55%;
   }
 
   * { 
+    /* Vorsicht: Nur nutzen, wenn du einen Custom Cursor implementiert hast! */
     cursor: none !important; 
     @apply border-border; 
   }
 
   html { 
     @apply scroll-smooth; 
+    /* Verbessert Schriftrendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   body {
@@ -124,37 +137,33 @@
     position: relative;
     min-height: 100dvh;
     
-    /* Raster-Hintergrund */
+    /* Raster-Hintergrund: Subtiler im Lightmode */
     background-image: 
-      radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.05) 1px, transparent 0);
+      radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.08) 1px, transparent 0);
     background-size: 32px 32px;
     background-attachment: fixed;
     isolation: isolate;
   }
 
   .dark body {
-    /* Zusätzlicher Glow im Dark Mode */
     background-image: 
       radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.1) 1px, transparent 0),
       radial-gradient(1200px 600px at 15% -10%, hsl(var(--primary) / 0.15) 0%, transparent 60%),
       radial-gradient(1200px 600px at 85% 110%, hsl(var(--primary) / 0.12) 0%, transparent 60%);
   }
 
-  /* Scanlines */
+  /* Scanlines - Jetzt über Variable gesteuert */
   body::after {
     content: ""; 
     position: fixed; 
     inset: 0; 
     pointer-events: none; 
     z-index: 50;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,255,150,0.02) 2px, rgba(0,255,150,0.02) 3px);
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, currentColor 2px, currentColor 3px);
     background-size: 100% 4px; 
-    opacity: 0.1; 
+    color: rgba(0,255,150, 0.1); /* Farbe der Scanlines */
+    opacity: var(--scanline-opacity); 
     mix-blend-mode: overlay;
-  }
-
-  .dark body::after {
-    opacity: 0.25; 
   }
 
   body::before {
@@ -170,6 +179,8 @@
 
   .gradient-border {
     @apply relative p-[1px] overflow-hidden;
+    /* Hardwarebeschleunigung für Animationen */
+    will-change: transform; 
     clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
   }
   
@@ -194,6 +205,7 @@
 
 @utility glitch-hover {
   @apply relative inline-block transition-all duration-300;
+  will-change: transform, text-shadow;
   &:hover {
     animation: glitch-rgb 0.4s ease-in-out infinite;
     color: hsl(var(--primary));
@@ -201,12 +213,12 @@
 }
 
 @utility hollow-text {
-  /* LIGHT MODE: Dickere Kontur (2px) für Lesbarkeit auf hellem Grund */
+  /* LIGHT MODE: Dickere Kontur für Lesbarkeit */
   -webkit-text-stroke: 2px hsl(var(--primary));
   color: transparent; 
   transition: all 0.4s ease;
   
-  /* DARK MODE: Feinere Kontur (1.5px) da Kontrast höher ist */
+  /* DARK MODE: Feinere Kontur */
   .dark & { -webkit-text-stroke: 1.5px hsl(var(--primary)); }
   
   &:hover {
@@ -227,7 +239,12 @@
 @utility cosmic-button {
   @apply px-10 py-4 bg-primary text-primary-foreground font-black tracking-[0.2em] uppercase transition-all duration-300 hover:brightness-110 active:scale-95 relative overflow-hidden;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
-  &:hover { box-shadow: 0 0 25px hsl(var(--primary) / 0.4); transform: translateY(-2px); }
+  
+  /* Schatten im Lightmode etwas subtiler, im Darkmode stärker */
+  &:hover { 
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.4); 
+    transform: translateY(-2px); 
+  }
 }
 
 @utility extra-button {
@@ -235,9 +252,9 @@
 }
 
 @utility tech-card {
-  @apply relative bg-card backdrop-blur-3xl border border-border p-8 transition-all duration-500 shadow-xl;
+  /* Schatten im Lightmode weniger aggressiv */
+  @apply relative bg-card backdrop-blur-3xl border border-border p-8 transition-all duration-500 shadow-lg shadow-black/5;
   
-  /* Eck-Klammern Design */
   clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
   
   &::before, &::after {
@@ -248,8 +265,13 @@
   &::after { bottom: 10px; right: 10px; border-right: 2px solid; border-bottom: 2px solid; }
   
   &:hover { 
-    @apply -translate-y-2 shadow-2xl border-primary/60; 
+    @apply -translate-y-2 border-primary/60 shadow-xl; 
   }
+  /* Dark Mode spezifischer Schatten */
+  .dark &:hover {
+    @apply shadow-primary/20;
+  }
+
   &:hover::before, &:hover::after { 
     @apply w-8 h-8 opacity-100; 
   }
