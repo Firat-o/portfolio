@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Send, Github } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -93,12 +93,21 @@ export const ContactSection = () => {
             <div className="p-8 tech-card border-primary/10 bg-card/30">
               <h4 className="font-mono text-xs uppercase tracking-[0.3em] mb-6 text-primary">Cyber_Networks</h4>
               <div className="flex gap-4">
+                {/* LinkedIn */}
                 <a 
                   href="https://www.linkedin.com/in/firat-o-2a7667295/" 
                   target="_blank" 
                   className="p-3 bg-foreground/5 hover:bg-primary/20 hover:text-primary rounded-lg transition-all border border-transparent hover:border-primary/40"
                 >
                   <Linkedin size={24} />
+                </a>
+
+                <a 
+                  href="https://github.com/Firat-o" 
+                  target="_blank" 
+                  className="p-3 bg-foreground/5 hover:bg-primary/20 hover:text-primary rounded-lg transition-all border border-transparent hover:border-primary/40"
+                >
+                  <Github size={24} />
                 </a>
               </div>
             </div>
