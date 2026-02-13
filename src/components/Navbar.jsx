@@ -27,13 +27,13 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4",
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4",
         isScrolled ? "py-4" : "py-8"
       )}
     >
       <div
         className={cn(
-          "container mx-auto max-w-5xl rounded-full transition-all duration-700 border flex items-center justify-between px-6 py-3",
+          "container mx-auto max-w-5xl rounded-full transition-all duration-700 border flex items-center justify-between px-6 py-3 relative z-[101]",
           isScrolled 
             ? "bg-background/60 backdrop-blur-2xl border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
             : "bg-transparent border-transparent"
@@ -67,7 +67,7 @@ export const Navbar = () => {
           </div>
           
           <button
-            className="md:hidden p-2 text-foreground transition-transform active:scale-90"
+            className="md:hidden p-2 text-foreground transition-transform active:scale-90 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,7 +81,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 p-8 bg-background/95 backdrop-blur-3xl border border-primary/20 rounded-3xl md:hidden flex flex-col gap-8 text-center shadow-2xl z-[60]"
+            className="absolute top-full left-4 right-4 mt-4 p-8 bg-background/95 backdrop-blur-3xl border border-primary/20 rounded-3xl md:hidden flex flex-col gap-8 text-center shadow-2xl z-[102]"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -99,12 +99,17 @@ export const Navbar = () => {
               ))}
             </div>
             
-            <div className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4 relative z-50 pointer-events-auto">
+            <div 
+              className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4 relative z-[103] pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
                <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
                   <SunMoon size={14} className="text-primary" />
                   Interface Mode
                </div>
-               <ThemeToggle />
+               <div className="p-2">
+                 <ThemeToggle />
+               </div>
             </div>
           </motion.div>
         )}
