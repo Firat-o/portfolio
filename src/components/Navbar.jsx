@@ -62,7 +62,7 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="relative z-50">
+          <div className="hidden md:block relative z-50">
             <ThemeToggle />
           </div>
           
@@ -81,7 +81,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 p-8 bg-background/95 backdrop-blur-3xl border border-primary/20 rounded-3xl md:hidden flex flex-col gap-8 text-center shadow-2xl"
+            className="absolute top-full left-4 right-4 mt-4 p-8 bg-background/95 backdrop-blur-3xl border border-primary/20 rounded-3xl md:hidden flex flex-col gap-8 text-center shadow-2xl z-[60]"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -99,7 +99,7 @@ export const Navbar = () => {
               ))}
             </div>
             
-            <div className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4">
+            <div className="pt-6 border-t border-primary/10 flex flex-col items-center gap-4 relative z-50 pointer-events-auto">
                <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
                   <SunMoon size={14} className="text-primary" />
                   Interface Mode
