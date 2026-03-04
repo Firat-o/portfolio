@@ -46,14 +46,14 @@ export const DevSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none">
-            <span className="opacity-0 animate-fade-in inline-block mr-4">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-none">
+            <span className="opacity-0 animate-fade-in inline-block mr-3 sm:mr-4">
               Hey, ich bin
             </span>
             <span className="glitch-hover text-primary opacity-0 animate-fade-in-delay-1 inline-block">
               Firat
             </span>
-            <span className="hollow-text ml-4 opacity-0 animate-fade-in-delay-3 inline-block">
+            <span className="hollow-text ml-3 sm:ml-4 opacity-0 animate-fade-in-delay-3 inline-block">
               O.
             </span>
           </h1>
@@ -66,7 +66,7 @@ export const DevSection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="extra-button">
+            <a href="#projects" className="extra-button text-sm md:text-base">
               Zeig mir die Projekte
             </a>
             <div className="text-[10px] uppercase tracking-[0.3em] text-primary/50 font-bold hidden sm:block">
@@ -77,7 +77,7 @@ export const DevSection = () => {
       </div>
 
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-40 hover:opacity-100 transition-opacity">
-        <span className="text-[10px] uppercase tracking-widest text-muted-foreground mb-2">Scroll to explore</span>
+        <span className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Scroll to explore</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
         <ArrowDown className="h-4 w-4 text-primary mt-2" />
       </div>
