@@ -10,7 +10,7 @@ const projects = [
     description: "High-End Landingpage mit Fokus auf Ästhetik und DSGVO-Konformität.",
     image: "/projects/project5.png",
     tags: ["React 19", "Tailwind 4", "Framer"],
-    demoUrl: "https://landingpage-sw.vercel.app/",
+    demoUrl: "https://www.sonjawerner.com//",
     githubUrl: "https://github.com/Firat-o/landingpage-sw",
     size: "large" 
   },
