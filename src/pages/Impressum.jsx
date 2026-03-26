@@ -20,7 +20,7 @@ export default function Impressum() {
           <h2 className="text-xl font-bold text-foreground mb-4">Angaben gemäß § 5 TMG</h2>
           <p>
             Firat Olcay<br />
-            Schillerstraße 13<br />
+            Strasse<br />
             58089 Hagen
           </p>
         </section>
