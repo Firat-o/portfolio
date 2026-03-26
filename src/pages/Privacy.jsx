@@ -20,25 +20,31 @@ export default function Privacy() {
           <h2 className="text-xl font-bold text-foreground mb-4">1. Datenschutz auf einen Blick</h2>
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Allgemeine Hinweise</h3>
           <p>
-            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Als reines Portfolio-Projekt werden hier grundsätzlich keine Daten systematisch gesammelt, getrackt oder ausgewertet.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-foreground mb-4">2. Hosting</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">2. Kontaktformular & E-Mail-Kontakt</h2>
           <p>
-            Wir hosten die Inhalte unserer Website bei folgendem Anbieter: Vercel. Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adressen.
+            Wenn Sie mich über die bereitgestellten Links oder das Kontaktformular kontaktieren, erfolgt die Weitergabe der Daten ausschließlich über das von Ihnen selbst gewählte E-Mail-Programm bzw. den von Ihnen genutzten E-Mail-Anbieter. Es findet keine Zwischenspeicherung Ihrer Daten in einer Datenbank auf dieser Website statt. Die übermittelten Daten werden von mir ausschließlich zur Bearbeitung Ihrer Anfrage genutzt und nicht an Dritte weitergegeben.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-foreground mb-4">3. Verantwortliche Stelle</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">3. Hosting</h2>
+          <p>
+            Wir hosten die Inhalte unserer Website bei Vercel. Anbieter ist die Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Wenn Sie unsere Website besuchen, erfasst Vercel technisch bedingte Logfiles inklusive Ihrer IP-Adresse, um die Website auszuliefern.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-foreground mb-4">4. Verantwortliche Stelle</h2>
           <p>
             Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
           </p>
           <p className="mt-2">
             Firat Olcay<br />
-            Schillerstraße 13<br />
             58089 Hagen<br />
             E-Mail: f.olcay@outlook.de
           </p>
