@@ -28,7 +28,7 @@ export default function Impressum() {
         <section>
           <h2 className="text-xl font-bold text-foreground mb-4">Kontakt</h2>
           <p>
-            Telefon: +49 178 4596118<br />
+            Telefon: +49 178 ******<br />
             E-Mail: f.olcay@outlook.de
           </p>
         </section>
