@@ -3,7 +3,6 @@ import { AnimatePresence } from "framer-motion";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 
-// 1. Die neuen Seiten importieren
 import Impressum from "./pages/Impressum";
 import Privacy from "./pages/Privacy";
 
@@ -18,7 +17,6 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         
-        {/* 2. Die neuen Routen registrieren */}
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/privacy" element={<Privacy />} />
         
