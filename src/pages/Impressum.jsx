@@ -20,7 +20,6 @@ export default function Impressum() {
           <h2 className="text-xl font-bold text-foreground mb-4">Angaben gemäß § 5 TMG</h2>
           <p>
             Firat Olcay<br />
-            Strasse<br />
             58089 Hagen
           </p>
         </section>
@@ -28,7 +27,7 @@ export default function Impressum() {
         <section>
           <h2 className="text-xl font-bold text-foreground mb-4">Kontakt</h2>
           <p>
-            Telefon: +49 178 ******<br />
+            Telefon: +49 178 4596118<br />
             E-Mail: f.olcay@outlook.de
           </p>
         </section>
@@ -36,7 +35,7 @@ export default function Impressum() {
         <section>
           <h2 className="text-xl font-bold text-foreground mb-4">Haftung für Inhalte</h2>
           <p>
-            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+            Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
           </p>
         </section>
       </div>
