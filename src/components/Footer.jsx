@@ -92,10 +92,10 @@ export const Footer = () => {
             <Shield size={10} className="text-primary" />
             © {new Date().getFullYear()} FIRAT-OLCAY // ALL RIGHTS RESERVED
           </div>
-          <div className="flex gap-8">
-             <a href="#" className="hover:text-foreground transition-colors">Impressum</a>
-             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-          </div>
+         <div className="flex gap-8">
+  <a href="/impressum" className="hover:text-foreground transition-colors">Impressum</a>
+  <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
+</div>
         </div>
       </div>
     </footer>
