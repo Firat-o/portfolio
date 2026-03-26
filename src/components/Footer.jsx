@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Github, Linkedin, Mail, ArrowUpCircle, MapPin, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -92,10 +93,10 @@ export const Footer = () => {
             <Shield size={10} className="text-primary" />
             © {new Date().getFullYear()} FIRAT-OLCAY // ALL RIGHTS RESERVED
           </div>
-         <div className="flex gap-8">
-  <a href="/impressum" className="hover:text-foreground transition-colors">Impressum</a>
-  <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
-</div>
+          <div className="flex gap-8">
+            <Link to="/impressum" className="hover:text-foreground transition-colors">Impressum</Link>
+            <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+          </div>
         </div>
       </div>
     </footer>
