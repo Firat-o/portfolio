@@ -34,7 +34,7 @@ export default function Privacy() {
         <section>
           <h2 className="text-xl font-bold text-foreground mb-4">3. Hosting</h2>
           <p>
-            Wir hosten die Inhalte unserer Website bei Vercel. Anbieter ist die Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Wenn Sie unsere Website besuchen, erfasst Vercel technisch bedingte Logfiles inklusive Ihrer IP-Adresse, um die Website auszuliefern.
+            Ich hoste die Inhalte meiner Website bei Vercel. Anbieter ist die Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Wenn Sie meine Website besuchen, erfasst Vercel technisch bedingte Logfiles inklusive Ihrer IP-Adresse, um die Website auszuliefern.
           </p>
         </section>
 
