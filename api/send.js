@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const data = await resend.emails.send({
-      from: 'Kontaktformular <kontakt@firato.tech>', // WICHTIG: Ersetze das mit deiner verifizierten Domain!
+      from: 'Kontaktformular <kontakt@firato.tech>', 
       to: ['f.olcay@outlook.de'], 
       subject: `Neue Nachricht von ${name}`,
       reply_to: email,
