@@ -3,17 +3,17 @@ import { ExternalLink, Github, ArrowUpRight, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const projects = [
-  {
-    id: 4,
-    title: "Aura-Landingpage",
-    category: "Next.js 15 / Design",
-    description: "High-End Landingpage mit Fokus auf Ästhetik und DSGVO-Konformität.",
-    image: "/projects/project5.png",
-    tags: ["React 19", "Tailwind 4", "Framer"],
-    demoUrl: "https://www.sonjawerner.com/",
-    githubUrl: "https://github.com/Firat-o/landingpage-sw",
-    size: "large" 
-  },
+  // {
+  //   id: 4,
+  //   title: "Aura-Landingpage",
+  //   category: "Next.js 15 / Design",
+  //   description: "High-End Landingpage mit Fokus auf Ästhetik und DSGVO-Konformität.",
+  //   image: "/projects/project5.png",
+  //   tags: ["React 19", "Tailwind 4", "Framer"],
+  //   demoUrl: "https://www.sonjawerner.com/",
+  //   githubUrl: "https://github.com/Firat-o/landingpage-sw",
+  //   size: "large" 
+  // },
   {
     id: 3,
     title: "Merch Shop",
