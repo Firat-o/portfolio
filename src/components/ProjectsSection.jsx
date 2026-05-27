@@ -98,6 +98,7 @@ export const ProjectsSection = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  onClick={() => window.open(project.demoUrl, "_blank")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/90 to-transparent z-10" />
