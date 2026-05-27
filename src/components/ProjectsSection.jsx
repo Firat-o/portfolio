@@ -80,6 +80,12 @@ export const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-6 h-full">
           {projects.map((project, i) => (
+          <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+>
             <motion.div
               key={project.id}
               custom={i}
@@ -142,6 +148,7 @@ export const ProjectsSection = () => {
                 #{project.id.toString().padStart(2, '0')}
             </div>
             </motion.div>
+            </a>
           ))}
         </div>
       </div>
